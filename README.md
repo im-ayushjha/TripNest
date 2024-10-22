@@ -58,7 +58,8 @@ hotel-booking-app/
 │   └── ...
 ├── .gitignore
 ├── package.json
-└── README.md
+└── README.md    
+
 Features
 View Available Hotels: Browse through a list of available hotels.
 Filter and Search: Filter hotels by date, location, price, and other criteria.
@@ -69,7 +70,6 @@ Technologies Used
 React: Front-end library for building user interfaces.
 React Router: For routing between different pages.
 Axios: For making HTTP requests to fetch data.
-Bootstrap: For responsive design and styling.
 Node.js: JavaScript runtime environment.
 Contributing
 Contributions are welcome! To contribute, follow these steps:
@@ -79,7 +79,5 @@ Create a new branch: git checkout -b feature-name.
 Make your changes and commit them: git commit -m 'Add some feature'.
 Push to the branch: git push origin feature-name.
 Submit a pull request.
-Please make sure your code follows the project's coding style and includes appropriate tests.
 
-License
-This project is licensed under the MIT License. See the LICENSE file for more details.
+
