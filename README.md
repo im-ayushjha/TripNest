@@ -18,7 +18,7 @@ To install the project, follow these steps:
 Clone the repository:
 bash
 Copy code
-git clone [https://github.com/yourusername/hotel-booking-app.git](https://github.com/im-ayushjha/TripNest.git)
+git clone [[https://github.com/yourusername/hotel-booking-app.git]](https://github.com/im-ayushjha/TripNest.git)
 Navigate to the project directory:
 bash
 Copy code
