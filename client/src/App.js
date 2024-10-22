@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./component/Home";
 import SignIn from './pages/signin';
-import About from './pages/about';
+// import About from './pages/about';
 import SignUp from './pages/Signup';
 import Navbar from './component/Navbar';
 import Card from './component/Card';
