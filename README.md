@@ -56,27 +56,23 @@ Travelers: In need of short-term stays for business trips, events, or vacations.
 Project Structure
 Here's an overview of the project structure:
 
-Code
-hotel-booking-app/
-├── public/
-│   ├── index.html
-│   └── ...
-├── src/
-│   ├── components/
-│   │   ├── HotelList.js
-│   │   ├── HotelDetails.js
-│   │   ├── BookingForm.js
-│   │   └── ...
-│   ├── pages/
-│   │   ├── Home.js
-│   │   ├── SearchResults.js
-│   │   └── ...
-│   ├── App.js
-│   ├── index.js
-│   └── ...
-├── .gitignore
-├── package.json
-└── README.md    
+TripNest/
+│
+├── client/              # Frontend code (React.js)
+├── public/              # Public files (images, CSS, JS)
+├── src/                 # Source files for the frontend
+│
+├── server/              # Backend server code (Node.js, Express)
+│   ├── controller/      # API controllers
+│   ├── model/           # Database models (MongoDB with Mongoose)
+│   ├── routes/          # API routes
+│   └── index.js         # Main server file
+│
+├── .gitignore           # Ignored files
+├── README.md            # Project documentation
+├── package.json         # Dependencies and scripts for the project
+└── package-lock.json    # Lockfile for dependencies
+
 
 Features
 View Available Hotels: Browse through a list of available hotels.
