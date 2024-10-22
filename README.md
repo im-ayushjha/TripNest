@@ -38,8 +38,7 @@ This will start the development server, and you can view the application by navi
 Project Structure
 Here's an overview of the project structure:
 
-java
-Copy code
+Code
 hotel-booking-app/
 ├── public/
 │   ├── index.html
