@@ -47,9 +47,9 @@ module.exports.login = async (req, res) => {
 
   module.exports.fileupload=async (req,res)=>{
       try{
-          con
+        
       }
-      catch(error){
+      catch{
 
       }
   }

@@ -20,4 +20,13 @@
     height: 100%;
     object-fit: cover; /* Crop images to cover area */
   }
+  .app {
+    text-align: center;
+    padding: 20px;
+  }
   
+  .cart {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
