@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import './loginregister.css'
 
-const Signin = () => {
+function Signin(){
    const navigate=useNavigate();
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
