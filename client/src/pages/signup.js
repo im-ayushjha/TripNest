@@ -4,13 +4,13 @@ import axios from 'axios';
 
 import './loginregister.css'
 
-const Signin = () => {
+const Signup = () => {
    const navigate=useNavigate();
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
-    // eslint-disable-next-line
+    //eslint-disable-next-line
     const [isError, setisError] = useState(false);
-    // eslint-disable-next-line
+    //eslint-disable-next-line
     const [error, setError] = useState("Some Error Occured!");
 
     const check = async (e) => {
@@ -86,4 +86,4 @@ const Signin = () => {
       );
 }
 
-export default Signin;
+export default Signup;
