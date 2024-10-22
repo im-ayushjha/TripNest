@@ -3,10 +3,12 @@ import './loginregister.css'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const Register = () => {
+
+function Signup () {
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
     const [name, setName] = useState("");
+    const [phone,setPhone] = useState();
     const [isError, setisError] = useState(false);
     const [error, setError] = useState("Some Error Occured!")
     const handleSubmit = async (e) => {
@@ -21,11 +23,12 @@ const Register = () => {
 
         try {
             const response = await axios.post(
-                "http://localhost:8000/register-user",
+                "http://localhost:5000/signup",
                 {
                     name: name,
                     email: email,
                     password: pass,
+                    phoneNumber:phone
                 }
             );
             console.log(response);
@@ -37,7 +40,7 @@ const Register = () => {
                 setError(response.data.error);
                 setisError(false);
             }
-            if (response.data.error === "User already Exist") {
+            if (response.data.error === "email already used") {
                 setisError(true);
                 setError(response.data.error);
                 
@@ -49,83 +52,44 @@ const Register = () => {
         }
     }
     return (
-        <div className='Stock_main_register'>
-        <div className='container_login'>
-            <div className="body">
-                <div className="home-bannerImage-container">
-                    {/* <img src={BannerBackground} alt="" /> */}
-                </div>
-                <div className="auth-form-container">
-                    <div style={{ marginBottom: "30px" }}>
-                        <h2>Register</h2>
-                    </div>
-                    <div className="forms">
-                        <form className="register-form" onSubmit={handleSubmit}>
-                            <div className="input-field">
-                                <label htmlFor="name">Full name</label>
-                                <input
-                                    value={name}
-                                    name="name"
-                                    onChange={(e) => setName(e.target.value)}
-                                    id="name"
-                                    placeholder="Full Name"
-                                />
-                            </div>
-
-                            <div className="input-field">
-                                <label htmlFor="email">Email</label>
-                                <input
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    type="email"
-                                    placeholder="youremail@gmail.com"
-                                    id="email"
-                                    name="email"
-                                />
-                            </div>
-
-                            <div className="input-field">
-                                <label htmlFor="password">Password</label>
-                                <input
-                                    value={pass}
-                                    onChange={(e) => setPass(e.target.value)}
-                                    type="password"
-                                    placeholder="****"
-                                    id="password"
-                                    name="password"
-                                />
-                            </div>
-
-
-
-                            <button
-                                style={{ marginTop: "30px" }}
-                                className="button-30"
-                                role="button"
-                            >
-                                Register
-                            </button>
-                        </form>
-                        {isError ? (
-                            <div className="error" style={{ marginTop: "20px" }}>
-                                <span style={{ color: "red" }}>{error}</span>
-                            </div>
-                        ) : (
-                            ""
-                        )}
-                    </div>
-                    <div style={{ marginTop: "30px" }}>
-                        <Link to={"/login"}>
-                            <span style={{ color: "#22092c" }}>
-                                Already Registered? Login Here
-                            </span>
-                        </Link>
-                    </div>
-                </div>
-            </div>
+        <div className="container">
+          <div className="form-container">
+            <form onSubmit={handleSubmit}>
+              <div className="brand">
+                <h3 className="login-title">Register</h3>
+              </div>
+              <input
+                type="text"
+                placeholder="Name"
+                name="name"
+                onChange={(e) => setName(e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Email"
+                name="email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <input
+                type="number"
+                placeholder="Phone"
+                name="phone"
+                onChange={(e) => setPhone(e.target.value)}
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                name="password"
+                onChange={(e) => setPass(e.target.value)}
+              />
+              <button type="submit">Register</button>
+              <span>
+                Already have an account? <Link to="/signin">Register</Link>
+              </span>
+            </form>
+          </div>
         </div>
-        </div>
-    )
+      );
 }
 
-export default Register;
+export default Signup;

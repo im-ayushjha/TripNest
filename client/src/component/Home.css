@@ -1,0 +1,23 @@
+/* src/Home.css */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px; /* Space between images */
+    margin: 20px;
+  }
+  
+  .gallery-item {
+    width: 150px; /* Set the width for each image item */
+    height: 150px; /* Set the height for each image item */
+    overflow: hidden; /* Hide overflow */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add shadow */
+  }
+  
+  .gallery-item img {
+    width: 100%; /* Make images responsive */
+    height: 100%;
+    object-fit: cover; /* Crop images to cover area */
+  }
+  

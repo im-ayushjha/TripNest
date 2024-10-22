@@ -21,7 +21,7 @@ const Signin = () => {
         }
 
         try {
-            const response = await axios.post("http://localhost:8000/login-user", {
+            const response = await axios.post("http://localhost:5000/signup", {
                 email: email,
                 password: pass,
             });
@@ -56,67 +56,32 @@ const Signin = () => {
         }
     }
     return (
-        <div className='Stock_main'>
-            <div className='container_login'>
-                <div className="body">
-                    <div className="auth-form-container">
-
-                        <div style={{ marginBottom: "30px" }}>
-                            <h2>Login</h2>
-                        </div>
-                        <div className="forms">
-                            <form className="register-form">
-                                <div className="input-field">
-                                    <label htmlFor="email">Email</label>
-                                    <input
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        type="email"
-                                        placeholder="youremail@gmail.com"
-                                        id="email"
-                                        name="email"
-                                    />
-                                </div>
-
-                                <div className="input-field">
-                                    <label htmlFor="password">Password</label>
-                                    <input
-                                        value={pass}
-                                        onChange={(e) => setPass(e.target.value)}
-                                        type="password"
-                                        placeholder="****"
-                                        id="password"
-                                        name="password"
-                                    />
-                                </div>
-                                <button
-                                    style={{ marginTop: "30px" }}
-                                    className="button-30"
-                                    onClick={check}
-                                >
-                                    Login
-                                </button>
-                                {isError ? (
-                                    <div className="error" style={{ marginTop: "20px" }}>
-                                        <span style={{ color: "red" }}>{error}</span>
-                                    </div>
-                                ) : (
-                                    ""
-                                )}
-                            </form>
-                        </div>
-                        <div style={{ marginTop: "30px", color: "#22092c" }}>
-                            <Link to={"/register"}>
-                                <span style={{ color: "#22092c" }}>
-                                    Don't have an account? Register here.
-                                </span>
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div className="container">
+          <div className="form-container">
+            <form>
+              <div className="brand">
+                <h3 className="login-title">LOGIN</h3>
+              </div>
+              <input
+                type="text"
+                placeholder="Email"
+                name="email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                name="password"
+                onChange={(e) => setPass(e.target.value)}
+              />
+              <button type="submit">Login</button>
+              <span>
+                Don't have an account? <Link to="/signup">Register</Link>
+              </span>
+            </form>
+          </div>
         </div>
-    )
+      );
 }
 
 export default Signin;
