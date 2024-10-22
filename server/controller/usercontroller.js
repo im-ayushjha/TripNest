@@ -1,5 +1,10 @@
 const User = require("../model/user");
 const bcrypt = require("bcrypt");
+const jwt = require('jsonwebtoken');
+// require("dotenv").config();
+
+// const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = "SDJFBWBWERMBJSFBKMBFJKB";
 
 module.exports.register = async (req, res) => {
   console.log(req.body);
@@ -38,8 +43,14 @@ module.exports.login = async (req, res) => {
         return res.json({ msg: "Invalid password", status: false });
     }
     
-    delete user.password;
-    return res.json({status:true,user});
+    const token = jwt.sign(
+        { userId: user._id, email: user.email },
+        JWT_SECRET,
+        { expiresIn: '1h' } // Token valid for 1 hour
+    );
+    const userData = { ...user._doc };
+    delete userData.password;
+    return res.json({ status: true, token, user: userData });
     } catch (error) {
       return res.json({status:false});
     }
@@ -47,10 +58,9 @@ module.exports.login = async (req, res) => {
 
   module.exports.fileupload=async (req,res)=>{
       try{
-        
+          con
       }
-      catch{
+      catch(error){
 
       }
   }
-

@@ -1,69 +1,69 @@
 import { useState } from 'react';
-import { Link,useNavigate} from "react-router-dom";
+import './loginregister.css'
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import './loginregister.css'
 
-const Signup = () => {
-   const navigate=useNavigate();
+function Signup () {
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
-    //eslint-disable-next-line
+    const [name, setName] = useState("");
+    const [phone,setPhone] = useState();
     const [isError, setisError] = useState(false);
-    //eslint-disable-next-line
-    const [error, setError] = useState("Some Error Occured!");
-
-    const check = async (e) => {
+    const [error, setError] = useState("Some Error Occured!")
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         setisError(false);
-        if (!email || !pass) {
-            setError("Some Fields are Missing!");
+        if (!name || !email || !pass) {
+            setError("Some Fields are Missing!")
             setisError(true);
             return;
         }
 
         try {
-            const response = await axios.post("http://localhost:5000/signin", {
-                email: email,
-                password: pass,
-            });
+            const response = await axios.post(
+                "http://localhost:5000/signup",
+                {
+                    name: name,
+                    email: email,
+                    password: pass,
+                    phoneNumber:phone
+                }
+            );
             console.log(response);
             if (!response) {
                 setisError(true);
-                setError("Something went wrong");
+                setError("Something went wrong")
                 return;
             } else {
+                setError(response.data.error);
                 setisError(false);
             }
-            if (response.data.message === "User does not exist") {
-                // window.alert('User does not exist')
-                setisError(true)
-                window.alert(response.data.message);
-                return;
-            } else if (response.data.message === "Invalid Password") {
-                setisError(true)
-                window.alert("Invalid email or Password");
-                return;
+            if (response.data.error === "email already used") {
+                setisError(true);
+                setError(response.data.error);
+                
+                console.log(response.data.error);
             }
-            
-            // console.log(response.data.us);
-            window.alert("login successful"); 
-            navigate('/');
-            
+             else window.alert("Registered successfully");
         } catch (error) {
             setisError(true);
-            setError("An error occurred during login");
-            console.log(error);
         }
     }
     return (
         <div className="container">
           <div className="form-container">
-            <form onSubmit={check}>
+            <form onSubmit={handleSubmit}>
               <div className="brand">
-                <h3 className="login-title">LOGIN</h3>
+                <h3 className="login-title">Register</h3>
               </div>
+              <input
+                type="text"
+                placeholder="Name"
+                name="name"
+                onChange={(e) => setName(e.target.value)}
+              />
               <input
                 type="text"
                 placeholder="Email"
@@ -71,14 +71,20 @@ const Signup = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
               <input
+                type="number"
+                placeholder="Phone"
+                name="phone"
+                onChange={(e) => setPhone(e.target.value)}
+              />
+              <input
                 type="password"
                 placeholder="Password"
                 name="password"
                 onChange={(e) => setPass(e.target.value)}
               />
-              <button type="submit">Login</button>
+              <button type="submit">Register</button>
               <span>
-                Don't have an account? <Link to="/signup">Register</Link>
+                Already have an account? <Link to="/signin">Login</Link>
               </span>
             </form>
           </div>
