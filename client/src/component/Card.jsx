@@ -1,8 +1,10 @@
+
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './CardItem.css';
 
-const Card = ({ name, image, price, location, link }) => {
+const CartItem = ({ name, image, price, location, link }) => {
   return (
     <div className="cart-item">
       <Link to={link} className="cart-item-link">
@@ -17,4 +19,4 @@ const Card = ({ name, image, price, location, link }) => {
   );
 };
 
-export default Card;
+export default CartItem;
